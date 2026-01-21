@@ -1,26 +1,20 @@
 /* ============================================
    COMMODORE 64 STYLE CSS
-   Autentisk retro-look fra 1982!
+   Klassisk retro-look fra 1982!
    ============================================ */
 
 /* C64 fargeplett */
 :root {
     --c64-blue: #4040e0;
     --c64-light-blue: #a0a0ff;
-    --c64-black: #000000;
-    --c64-white: #ffffff;
+    --c64-green: #58d854;
     --c64-red: #e75b5b;
     --c64-cyan: #58d8d8;
-    --c64-purple: #a848a8;
-    --c64-green: #58d854;
-    --c64-yellow: #e8e858;
-    --c64-orange: #d89050;
-    --c64-brown: #785030;
-    --c64-pink: #f878f8;
-    --c64-dark-grey: #484848;
-    --c64-grey: #787878;
-    --c64-light-green: #a8f8a8;
-    --c64-light-grey: #b8b8b8;
+    --c64-yellow: #ffff00;
+    --c64-white: #ffffff;
+    --c64-black: #000000;
+    --c64-grey: #808080;
+    --c64-dark-grey: #404040;
 }
 
 /* Importer retro font */
@@ -35,7 +29,6 @@
 body {
     font-family: 'Press Start 2P', monospace;
     background-color: var(--c64-blue);
-    color: var(--c64-light-blue);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -43,14 +36,19 @@ body {
     padding: 20px;
 }
 
-/* C64 Border effekt */
+/* C64 border effekt */
 .c64-border {
-    border: 20px solid var(--c64-light-blue);
+    background-color: var(--c64-light-blue);
+    padding: 20px;
+    border: 8px solid var(--c64-light-blue);
+    box-shadow:
+        0 0 0 4px var(--c64-black),
+        0 0 30px rgba(0,0,0,0.5);
+}
+
+.c64-border > div {
     background-color: var(--c64-blue);
     padding: 20px;
-    box-shadow:
-        inset 0 0 0 2px var(--c64-black),
-        0 0 0 2px var(--c64-black);
 }
 
 /* Header styling */
@@ -60,37 +58,61 @@ body {
 }
 
 .header h1 {
-    font-size: 24px;
+    font-size: 28px;
     color: var(--c64-light-blue);
-    text-shadow: 3px 3px 0 var(--c64-black);
+    text-shadow: 2px 2px 0 var(--c64-black);
     margin-bottom: 10px;
-    animation: blink 1s step-end infinite;
 }
 
-@keyframes blink {
-    50% { opacity: 0.8; }
+/* C64 startup tekst */
+.startup-text {
+    font-size: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--c64-light-blue);
 }
 
-/* Blinkende cursor effekt */
+/* Blinkende cursor */
 .cursor {
     display: inline-block;
-    width: 15px;
-    height: 20px;
+    width: 10px;
+    height: 14px;
     background-color: var(--c64-light-blue);
-    animation: cursor-blink 0.5s step-end infinite;
+    animation: blink 1s step-end infinite;
     vertical-align: middle;
     margin-left: 5px;
 }
 
-@keyframes cursor-blink {
-    50% { opacity: 0; }
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Scanlines for CRT-look */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: 1000;
 }
 
 /* Spill canvas container */
 .game-container {
     background-color: var(--c64-black);
-    padding: 10px;
+    padding: 4px;
     border: 4px solid var(--c64-light-blue);
+    border-radius: 0;
 }
 
 #gameCanvas {
@@ -105,6 +127,7 @@ body {
     font-size: 10px;
     text-align: center;
     line-height: 2;
+    color: var(--c64-light-blue);
 }
 
 .instructions p {
@@ -119,87 +142,69 @@ body {
     justify-content: space-between;
     width: 100%;
     max-width: 640px;
+    color: var(--c64-light-blue);
 }
 
 .score-display span {
-    color: var(--c64-yellow);
+    color: var(--c64-cyan);
 }
 
-/* Knapper */
+/* C64-style knapper */
 .c64-button {
     font-family: 'Press Start 2P', monospace;
     font-size: 12px;
     padding: 15px 30px;
-    background-color: var(--c64-dark-grey);
-    color: var(--c64-light-blue);
-    border: 4px solid var(--c64-light-grey);
+    background-color: var(--c64-grey);
+    color: var(--c64-black);
+    border: none;
+    border-radius: 0;
     cursor: pointer;
     text-transform: uppercase;
     margin: 10px;
+    box-shadow:
+        4px 4px 0 var(--c64-dark-grey),
+        -2px -2px 0 var(--c64-white) inset;
     transition: all 0.1s;
 }
 
 .c64-button:hover {
-    background-color: var(--c64-grey);
-    border-color: var(--c64-white);
+    background-color: var(--c64-light-blue);
+    color: var(--c64-black);
 }
 
 .c64-button:active {
-    transform: translateY(2px);
+    transform: translate(2px, 2px);
+    box-shadow:
+        2px 2px 0 var(--c64-dark-grey),
+        -1px -1px 0 var(--c64-white) inset;
 }
 
-/* Startup tekst effekt */
-.startup-text {
-    font-size: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 1.8;
+/* Joystick indikator */
+.joystick-hint {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
 }
 
-.startup-text .ready {
-    color: var(--c64-light-blue);
-}
-
-/* Game over overlay */
-.game-over {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 100;
-}
-
-.game-over h2 {
-    font-size: 20px;
-    color: var(--c64-red);
-    text-shadow: 2px 2px 0 var(--c64-black);
-    margin-bottom: 20px;
-}
-
-/* Scanline effekt for ekstra retro-feel */
-.scanlines {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.1),
-        rgba(0, 0, 0, 0.1) 1px,
-        transparent 1px,
-        transparent 2px
-    );
-    z-index: 1000;
+.joystick-hint .key {
+    width: 40px;
+    height: 40px;
+    background: var(--c64-grey);
+    border: 2px solid var(--c64-light-blue);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c64-black);
+    font-size: 14px;
 }
 
 /* Footer */
 .footer {
     margin-top: 20px;
     font-size: 8px;
-    color: var(--c64-grey);
+    color: var(--c64-light-blue);
     text-align: center;
 }
 
@@ -210,19 +215,18 @@ a {
 }
 
 a:hover {
-    color: var(--c64-white);
+    color: var(--c64-green);
     text-decoration: underline;
 }
 
 /* Responsiv design */
 @media (max-width: 700px) {
     .c64-border {
-        border-width: 10px;
         padding: 10px;
     }
 
     .header h1 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .instructions {

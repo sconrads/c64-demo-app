@@ -1,5 +1,5 @@
 """
-C64 Demo App - En retro-spill app for KI-foredrag
+Commodore 64 Demo App - En retro-spill app for KI-foredrag
 Perfekt for å demonstrere live kodeendringer med KI!
 """
 
@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 # Spillkonfigurasjon - PERFEKT FOR LIVE DEMO ENDRINGER!
 GAME_CONFIG = {
-    "player_color": "#58d854",      # Grønn spiller
-    "enemy_color": "#e75b5b",       # Røde fiender
-    "bullet_color": "#ffff00",      # Gule kuler
+    "player_color": "#58d854",      # C64 grønn
+    "enemy_color": "#e75b5b",       # C64 rød
+    "bullet_color": "#ffff00",      # Gul
     "player_speed": 8,              # Spillerhastighet
     "bullet_speed": 10,             # Kulehastighet
     "enemy_speed": 2,               # Fiendehastighet

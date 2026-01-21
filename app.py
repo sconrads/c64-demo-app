@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 # Spillkonfigurasjon - PERFEKT FOR LIVE DEMO ENDRINGER!
 GAME_CONFIG = {
-    "player_color": "#0071CE",      # SpareBank 1 blå
-    "enemy_color": "#C8102E",       # SpareBank 1 rød
-    "bullet_color": "#FFFFFF",      # Hvit
+    "player_color": "#005aa4",      # Vann - SpareBank 1 blå
+    "enemy_color": "#db3335",       # Bær - SpareBank 1 rød
+    "bullet_color": "#ffffff",      # Hvit
     "player_speed": 8,              # Spillerhastighet
     "bullet_speed": 10,             # Kulehastighet
     "enemy_speed": 2,               # Fiendehastighet

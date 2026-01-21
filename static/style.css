@@ -3,17 +3,21 @@
    Moderne bankdesign
    ============================================ */
 
-/* SpareBank 1 fargeplett */
+/* SpareBank 1 fargeplett - offisielle farger fra design.sparebank1.no */
 :root {
-    --sb1-dark-blue: #002776;
-    --sb1-blue: #0071CE;
-    --sb1-light-blue: #4DA3E0;
-    --sb1-red: #C8102E;
-    --sb1-white: #FFFFFF;
-    --sb1-light-grey: #F5F5F5;
-    --sb1-grey: #E0E0E0;
-    --sb1-dark-grey: #666666;
-    --sb1-black: #1A1A1A;
+    --sb1-fjell: #002776;       /* Fjell - primær mørk blå */
+    --sb1-vann: #005aa4;        /* Vann - primær blå */
+    --sb1-frost: #7eb5d2;       /* Frost - lys blå */
+    --sb1-baer: #db3335;        /* Bær - rød aksent */
+    --sb1-skog: #00754e;        /* Skog - grønn */
+    --sb1-nordlys: #33af85;     /* Nordlys - lys grønn */
+    --sb1-sol: #dc8000;         /* Sol - oransje */
+    --sb1-sand: #f8e9dd;        /* Sand - lys bakgrunn */
+    --sb1-natt: #001032;        /* Natt - mørkest blå */
+    --sb1-hvit: #ffffff;        /* Hvit */
+    --sb1-svart: #020a0a;       /* Svart */
+    --sb1-koksgraa: #323232;    /* Koksgrå */
+    --sb1-graa: #d8d8d8;        /* Grå */
 }
 
 /* Importer moderne font */
@@ -26,8 +30,8 @@
 }
 
 body {
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(180deg, var(--sb1-dark-blue) 0%, #001a4d 100%);
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--sb1-fjell) 0%, var(--sb1-natt) 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -37,9 +41,9 @@ body {
 
 /* SpareBank 1 container */
 .sb1-container {
-    background-color: var(--sb1-white);
+    background-color: var(--sb1-hvit);
     padding: 0;
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     max-width: 800px;
@@ -47,35 +51,20 @@ body {
 }
 
 .sb1-header {
-    background-color: var(--sb1-dark-blue);
+    background-color: var(--sb1-fjell);
     padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sb1-logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--sb1-white);
-    letter-spacing: -0.5px;
-}
-
-.sb1-logo .one {
-    color: var(--sb1-red);
-    background-color: var(--sb1-white);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 8px;
-    font-weight: 700;
+.sb1-logo-img {
+    height: 32px;
+    width: auto;
 }
 
 .sb1-content {
-    background-color: var(--sb1-white);
+    background-color: var(--sb1-hvit);
     padding: 30px;
 }
 
@@ -87,19 +76,19 @@ body {
 
 .header h1 {
     font-size: 32px;
-    color: var(--sb1-dark-blue);
+    color: var(--sb1-fjell);
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .header .subtitle {
     font-size: 14px;
-    color: var(--sb1-dark-grey);
+    color: var(--sb1-koksgraa);
 }
 
 /* Spill canvas container */
 .game-container {
-    background-color: var(--sb1-black);
+    background-color: var(--sb1-svart);
     padding: 4px;
     border-radius: 8px;
     margin: 20px 0;
@@ -120,15 +109,15 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    color: var(--sb1-dark-blue);
+    color: var(--sb1-fjell);
     font-weight: 600;
-    background-color: var(--sb1-light-grey);
+    background-color: var(--sb1-sand);
     padding: 15px 20px;
     border-radius: 8px;
 }
 
 .score-display span {
-    color: var(--sb1-blue);
+    color: var(--sb1-vann);
 }
 
 /* Instruksjoner */
@@ -137,7 +126,7 @@ body {
     font-size: 14px;
     text-align: center;
     line-height: 1.8;
-    color: var(--sb1-dark-grey);
+    color: var(--sb1-koksgraa);
 }
 
 .instructions p {
@@ -146,76 +135,76 @@ body {
 
 /* SpareBank 1 knapper */
 .sb1-button {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 14px;
     font-weight: 600;
     padding: 14px 32px;
-    background-color: var(--sb1-red);
-    color: var(--sb1-white);
+    background-color: var(--sb1-baer);
+    color: var(--sb1-hvit);
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin: 10px;
-    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+    box-shadow: 0 4px 12px rgba(219, 51, 53, 0.3);
     transition: all 0.2s ease;
 }
 
 .sb1-button:hover {
-    background-color: #a50d26;
+    background-color: #b82a2c;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(200, 16, 46, 0.4);
+    box-shadow: 0 6px 16px rgba(219, 51, 53, 0.4);
 }
 
 .sb1-button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
+    box-shadow: 0 2px 8px rgba(219, 51, 53, 0.3);
 }
 
 .sb1-button.secondary {
-    background-color: var(--sb1-blue);
-    box-shadow: 0 4px 12px rgba(0, 113, 206, 0.3);
+    background-color: var(--sb1-vann);
+    box-shadow: 0 4px 12px rgba(0, 90, 164, 0.3);
 }
 
 .sb1-button.secondary:hover {
-    background-color: #005ba3;
-    box-shadow: 0 6px 16px rgba(0, 113, 206, 0.4);
+    background-color: #004a8a;
+    box-shadow: 0 6px 16px rgba(0, 90, 164, 0.4);
 }
 
 /* Footer */
 .footer {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid var(--sb1-grey);
+    border-top: 1px solid var(--sb1-graa);
     font-size: 12px;
-    color: var(--sb1-dark-grey);
+    color: var(--sb1-koksgraa);
     text-align: center;
 }
 
 /* Link styling */
 a {
-    color: var(--sb1-blue);
+    color: var(--sb1-vann);
     text-decoration: none;
     font-weight: 600;
 }
 
 a:hover {
-    color: var(--sb1-dark-blue);
+    color: var(--sb1-fjell);
     text-decoration: underline;
 }
 
 /* Info box */
 .info-box {
-    background-color: var(--sb1-light-grey);
-    border-left: 4px solid var(--sb1-blue);
+    background-color: var(--sb1-sand);
+    border-left: 4px solid var(--sb1-vann);
     padding: 15px 20px;
     margin: 20px 0;
     border-radius: 0 8px 8px 0;
 }
 
 .info-box p {
-    color: var(--sb1-dark-blue);
+    color: var(--sb1-fjell);
     margin: 5px 0;
 }
 

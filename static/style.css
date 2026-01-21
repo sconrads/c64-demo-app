@@ -1,24 +1,23 @@
 /* ============================================
-   COMMODORE 64 STYLE CSS
-   Klassisk retro-look fra 1982!
+   SPAREBANK 1 STYLE CSS
+   Moderne bankdesign
    ============================================ */
 
-/* C64 fargeplett */
+/* SpareBank 1 fargeplett */
 :root {
-    --c64-blue: #4040e0;
-    --c64-light-blue: #a0a0ff;
-    --c64-green: #58d854;
-    --c64-red: #e75b5b;
-    --c64-cyan: #58d8d8;
-    --c64-yellow: #ffff00;
-    --c64-white: #ffffff;
-    --c64-black: #000000;
-    --c64-grey: #808080;
-    --c64-dark-grey: #404040;
+    --sb1-dark-blue: #002776;
+    --sb1-blue: #0071CE;
+    --sb1-light-blue: #4DA3E0;
+    --sb1-red: #C8102E;
+    --sb1-white: #FFFFFF;
+    --sb1-light-grey: #F5F5F5;
+    --sb1-grey: #E0E0E0;
+    --sb1-dark-grey: #666666;
+    --sb1-black: #1A1A1A;
 }
 
-/* Importer retro font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Importer moderne font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 * {
     margin: 0;
@@ -27,8 +26,8 @@
 }
 
 body {
-    font-family: 'Press Start 2P', monospace;
-    background-color: var(--c64-blue);
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, var(--sb1-dark-blue) 0%, #001a4d 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -36,19 +35,48 @@ body {
     padding: 20px;
 }
 
-/* C64 border effekt */
-.c64-border {
-    background-color: var(--c64-light-blue);
-    padding: 20px;
-    border: 8px solid var(--c64-light-blue);
-    box-shadow:
-        0 0 0 4px var(--c64-black),
-        0 0 30px rgba(0,0,0,0.5);
+/* SpareBank 1 container */
+.sb1-container {
+    background-color: var(--sb1-white);
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
 }
 
-.c64-border > div {
-    background-color: var(--c64-blue);
-    padding: 20px;
+.sb1-header {
+    background-color: var(--sb1-dark-blue);
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sb1-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sb1-white);
+    letter-spacing: -0.5px;
+}
+
+.sb1-logo .one {
+    color: var(--sb1-red);
+    background-color: var(--sb1-white);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    font-weight: 700;
+}
+
+.sb1-content {
+    background-color: var(--sb1-white);
+    padding: 30px;
 }
 
 /* Header styling */
@@ -58,178 +86,163 @@ body {
 }
 
 .header h1 {
-    font-size: 28px;
-    color: var(--c64-light-blue);
-    text-shadow: 2px 2px 0 var(--c64-black);
+    font-size: 32px;
+    color: var(--sb1-dark-blue);
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
-/* C64 startup tekst */
-.startup-text {
-    font-size: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 1.8;
-    color: var(--c64-light-blue);
-}
-
-/* Blinkende cursor */
-.cursor {
-    display: inline-block;
-    width: 10px;
-    height: 14px;
-    background-color: var(--c64-light-blue);
-    animation: blink 1s step-end infinite;
-    vertical-align: middle;
-    margin-left: 5px;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-/* Scanlines for CRT-look */
-.scanlines {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.1) 0px,
-        rgba(0, 0, 0, 0.1) 1px,
-        transparent 1px,
-        transparent 2px
-    );
-    z-index: 1000;
+.header .subtitle {
+    font-size: 14px;
+    color: var(--sb1-dark-grey);
 }
 
 /* Spill canvas container */
 .game-container {
-    background-color: var(--c64-black);
+    background-color: var(--sb1-black);
     padding: 4px;
-    border: 4px solid var(--c64-light-blue);
-    border-radius: 0;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #gameCanvas {
     display: block;
+    border-radius: 4px;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-}
-
-/* Instruksjoner */
-.instructions {
-    margin-top: 20px;
-    font-size: 10px;
-    text-align: center;
-    line-height: 2;
-    color: var(--c64-light-blue);
-}
-
-.instructions p {
-    margin: 5px 0;
 }
 
 /* Score display */
 .score-display {
     font-size: 14px;
-    margin: 15px 0;
+    margin: 20px 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 640px;
-    color: var(--c64-light-blue);
+    color: var(--sb1-dark-blue);
+    font-weight: 600;
+    background-color: var(--sb1-light-grey);
+    padding: 15px 20px;
+    border-radius: 8px;
 }
 
 .score-display span {
-    color: var(--c64-cyan);
+    color: var(--sb1-blue);
 }
 
-/* C64-style knapper */
-.c64-button {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 12px;
-    padding: 15px 30px;
-    background-color: var(--c64-grey);
-    color: var(--c64-black);
+/* Instruksjoner */
+.instructions {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--sb1-dark-grey);
+}
+
+.instructions p {
+    margin: 8px 0;
+}
+
+/* SpareBank 1 knapper */
+.sb1-button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    background-color: var(--sb1-red);
+    color: var(--sb1-white);
     border: none;
-    border-radius: 0;
+    border-radius: 8px;
     cursor: pointer;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin: 10px;
-    box-shadow:
-        4px 4px 0 var(--c64-dark-grey),
-        -2px -2px 0 var(--c64-white) inset;
-    transition: all 0.1s;
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+    transition: all 0.2s ease;
 }
 
-.c64-button:hover {
-    background-color: var(--c64-light-blue);
-    color: var(--c64-black);
+.sb1-button:hover {
+    background-color: #a50d26;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 16, 46, 0.4);
 }
 
-.c64-button:active {
-    transform: translate(2px, 2px);
-    box-shadow:
-        2px 2px 0 var(--c64-dark-grey),
-        -1px -1px 0 var(--c64-white) inset;
+.sb1-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
 }
 
-/* Joystick indikator */
-.joystick-hint {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
+.sb1-button.secondary {
+    background-color: var(--sb1-blue);
+    box-shadow: 0 4px 12px rgba(0, 113, 206, 0.3);
 }
 
-.joystick-hint .key {
-    width: 40px;
-    height: 40px;
-    background: var(--c64-grey);
-    border: 2px solid var(--c64-light-blue);
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--c64-black);
-    font-size: 14px;
+.sb1-button.secondary:hover {
+    background-color: #005ba3;
+    box-shadow: 0 6px 16px rgba(0, 113, 206, 0.4);
 }
 
 /* Footer */
 .footer {
     margin-top: 20px;
-    font-size: 8px;
-    color: var(--c64-light-blue);
+    padding-top: 20px;
+    border-top: 1px solid var(--sb1-grey);
+    font-size: 12px;
+    color: var(--sb1-dark-grey);
     text-align: center;
 }
 
 /* Link styling */
 a {
-    color: var(--c64-cyan);
+    color: var(--sb1-blue);
     text-decoration: none;
+    font-weight: 600;
 }
 
 a:hover {
-    color: var(--c64-green);
+    color: var(--sb1-dark-blue);
     text-decoration: underline;
+}
+
+/* Info box */
+.info-box {
+    background-color: var(--sb1-light-grey);
+    border-left: 4px solid var(--sb1-blue);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.info-box p {
+    color: var(--sb1-dark-blue);
+    margin: 5px 0;
 }
 
 /* Responsiv design */
 @media (max-width: 700px) {
-    .c64-border {
-        padding: 10px;
+    .sb1-container {
+        border-radius: 12px;
+    }
+
+    .sb1-header {
+        padding: 15px 20px;
+    }
+
+    .sb1-content {
+        padding: 20px;
     }
 
     .header h1 {
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .instructions {
-        font-size: 8px;
+        font-size: 12px;
+    }
+
+    .sb1-button {
+        padding: 12px 24px;
+        font-size: 12px;
     }
 }

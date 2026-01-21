@@ -7,6 +7,7 @@ Demo-app for foredrag om KI-assistert utvikling.
 - `/atari` - Bytt til Atari 2600-tema
 - `/c64` - Bytt til Commodore 64-tema
 - `/sb1` - Bytt til SpareBank 1-tema
+- `/musikk` - Legg på 80-talls chiptune-musikk
 
 ## Kjøring
 

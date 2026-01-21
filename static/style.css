@@ -1,0 +1,231 @@
+/* ============================================
+   COMMODORE 64 STYLE CSS
+   Autentisk retro-look fra 1982!
+   ============================================ */
+
+/* C64 fargeplett */
+:root {
+    --c64-blue: #4040e0;
+    --c64-light-blue: #a0a0ff;
+    --c64-black: #000000;
+    --c64-white: #ffffff;
+    --c64-red: #e75b5b;
+    --c64-cyan: #58d8d8;
+    --c64-purple: #a848a8;
+    --c64-green: #58d854;
+    --c64-yellow: #e8e858;
+    --c64-orange: #d89050;
+    --c64-brown: #785030;
+    --c64-pink: #f878f8;
+    --c64-dark-grey: #484848;
+    --c64-grey: #787878;
+    --c64-light-green: #a8f8a8;
+    --c64-light-grey: #b8b8b8;
+}
+
+/* Importer retro font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    background-color: var(--c64-blue);
+    color: var(--c64-light-blue);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* C64 Border effekt */
+.c64-border {
+    border: 20px solid var(--c64-light-blue);
+    background-color: var(--c64-blue);
+    padding: 20px;
+    box-shadow:
+        inset 0 0 0 2px var(--c64-black),
+        0 0 0 2px var(--c64-black);
+}
+
+/* Header styling */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: var(--c64-light-blue);
+    text-shadow: 3px 3px 0 var(--c64-black);
+    margin-bottom: 10px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.8; }
+}
+
+/* Blinkende cursor effekt */
+.cursor {
+    display: inline-block;
+    width: 15px;
+    height: 20px;
+    background-color: var(--c64-light-blue);
+    animation: cursor-blink 0.5s step-end infinite;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+@keyframes cursor-blink {
+    50% { opacity: 0; }
+}
+
+/* Spill canvas container */
+.game-container {
+    background-color: var(--c64-black);
+    padding: 10px;
+    border: 4px solid var(--c64-light-blue);
+}
+
+#gameCanvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Instruksjoner */
+.instructions {
+    margin-top: 20px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 2;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+/* Score display */
+.score-display {
+    font-size: 14px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 640px;
+}
+
+.score-display span {
+    color: var(--c64-yellow);
+}
+
+/* Knapper */
+.c64-button {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    padding: 15px 30px;
+    background-color: var(--c64-dark-grey);
+    color: var(--c64-light-blue);
+    border: 4px solid var(--c64-light-grey);
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 10px;
+    transition: all 0.1s;
+}
+
+.c64-button:hover {
+    background-color: var(--c64-grey);
+    border-color: var(--c64-white);
+}
+
+.c64-button:active {
+    transform: translateY(2px);
+}
+
+/* Startup tekst effekt */
+.startup-text {
+    font-size: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.startup-text .ready {
+    color: var(--c64-light-blue);
+}
+
+/* Game over overlay */
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 100;
+}
+
+.game-over h2 {
+    font-size: 20px;
+    color: var(--c64-red);
+    text-shadow: 2px 2px 0 var(--c64-black);
+    margin-bottom: 20px;
+}
+
+/* Scanline effekt for ekstra retro-feel */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: 1000;
+}
+
+/* Footer */
+.footer {
+    margin-top: 20px;
+    font-size: 8px;
+    color: var(--c64-grey);
+    text-align: center;
+}
+
+/* Link styling */
+a {
+    color: var(--c64-cyan);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--c64-white);
+    text-decoration: underline;
+}
+
+/* Responsiv design */
+@media (max-width: 700px) {
+    .c64-border {
+        border-width: 10px;
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 16px;
+    }
+
+    .instructions {
+        font-size: 8px;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.game_title }} - C64 Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Scanline effekt for autentisk CRT-look -->
+    <div class="scanlines"></div>
+
+    <div class="c64-border">
+        <!-- C64 Startup tekst -->
+        <div class="startup-text">
+            **** COMMODORE 64 BASIC V2 ****<br>
+            64K RAM SYSTEM  38911 BASIC BYTES FREE<br><br>
+            <span class="ready">READY.</span>
+            <span class="cursor"></span>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>{{ config.game_title }}</h1>
+        </div>
+
+        <!-- Score display -->
+        <div class="score-display">
+            <div>SCORE: <span id="score">0</span></div>
+            <div>HI-SCORE: <span id="hiScore">0</span></div>
+            <div>LIVES: <span id="lives">{{ config.player_lives }}</span></div>
+        </div>
+
+        <!-- Spill container -->
+        <div class="game-container">
+            <canvas id="gameCanvas" width="640" height="400"></canvas>
+        </div>
+
+        <!-- Instruksjoner -->
+        <div class="instructions">
+            <p>PILTASTER VENSTRE/HOYRE = BEVEG SKIP</p>
+            <p>MELLOMROM = SKYT</p>
+            <p>P = PAUSE | R = RESTART</p>
+        </div>
+
+        <!-- Kontroller -->
+        <div style="text-align: center; margin-top: 15px;">
+            <button class="c64-button" onclick="restartGame()">START SPILL</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>LAGET MED FLASK + KI</p>
+            <p>DEMO FOR FOREDRAG OM KI OG PSYKISK HELSE</p>
+        </div>
+    </div>
+
+    <!-- Spillkonfigurasjon fra Flask -->
+    <script>
+        const CONFIG = {
+            playerColor: "{{ config.player_color }}",
+            enemyColor: "{{ config.enemy_color }}",
+            bulletColor: "{{ config.bullet_color }}",
+            playerSpeed: {{ config.player_speed }},
+            bulletSpeed: {{ config.bullet_speed }},
+            enemySpeed: {{ config.enemy_speed }},
+            enemyRows: {{ config.enemy_rows }},
+            enemyCols: {{ config.enemy_cols }},
+            playerLives: {{ config.player_lives }},
+            gameTitle: "{{ config.game_title }}"
+        };
+    </script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>

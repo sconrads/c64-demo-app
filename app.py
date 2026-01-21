@@ -18,7 +18,8 @@ GAME_CONFIG = {
     "enemy_rows": 3,                # Antall rader med fiender
     "enemy_cols": 8,                # Antall kolonner med fiender
     "player_lives": 3,              # Antall liv
-    "game_title": "SPACE RAIDERS"   # Spilltittel
+    "game_title": "SPACE RAIDERS",  # Spilltittel
+    "enemy_image": "/static/dnb-logo.svg"  # Skyt på konkurrenten!
 }
 
 

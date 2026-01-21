@@ -40,6 +40,13 @@ let bullets = [];
 let enemies = [];
 let particles = [];  // For eksplosjonseffekter
 
+// Fiendebilde (lastes hvis konfigurert)
+let enemyImage = null;
+if (CONFIG.enemyImage) {
+    enemyImage = new Image();
+    enemyImage.src = CONFIG.enemyImage;
+}
+
 // Fiende-bevegelse
 let enemyDirection = 1;
 let enemyDropAmount = 20;
@@ -105,10 +112,54 @@ class Enemy {
     }
 
     draw() {
-        ctx.fillStyle = this.color;
+        // Bruk bilde hvis tilgjengelig, ellers pixel-art
+        if (enemyImage && enemyImage.complete) {
+            this.drawImageEnemy();
+        } else {
+            ctx.fillStyle = this.color;
+            this.drawPixelAlien();
+        }
+    }
 
-        // Tegn en pixel-art alien
-        this.drawPixelAlien();
+    drawImageEnemy() {
+        // Tegn bildet som fiende med sirkulær klipping
+        ctx.save();
+
+        // Lag sirkulær klipping
+        ctx.beginPath();
+        ctx.arc(
+            this.x + this.width / 2,
+            this.y + this.height / 2,
+            this.width / 2,
+            0,
+            Math.PI * 2
+        );
+        ctx.closePath();
+        ctx.clip();
+
+        // Tegn bildet
+        ctx.drawImage(
+            enemyImage,
+            this.x,
+            this.y - 5,
+            this.width,
+            this.width  // Kvadratisk for å bevare proporsjoner
+        );
+
+        ctx.restore();
+
+        // Tegn en ramme rundt
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(
+            this.x + this.width / 2,
+            this.y + this.height / 2,
+            this.width / 2,
+            0,
+            Math.PI * 2
+        );
+        ctx.stroke();
     }
 
     drawPixelAlien() {

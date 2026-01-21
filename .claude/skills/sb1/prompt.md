@@ -33,6 +33,7 @@ GAME_CONFIG = {
     "player_color": "#0071CE",      # SpareBank 1 lys blå
     "enemy_color": "#C8102E",       # SpareBank 1 rød
     "bullet_color": "#FFFFFF",      # Hvit
+    "enemy_image": "/static/dnb-logo.svg"  # Skyt på konkurrenten!
 }
 ```
 

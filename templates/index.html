@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config.game_title }} - SpareBank 1 Demo</title>
+    <title>{{ config.game_title }} - C64 Demo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="sb1-container">
-        <!-- SpareBank 1 header med logo -->
-        <div class="sb1-header">
-            <img src="{{ url_for('static', filename='sb1-logo-white.svg') }}" alt="SpareBank 1" class="sb1-logo-img">
-        </div>
+    <div class="c64-border">
+        <div class="c64-inner scanlines">
+            <!-- C64 BASIC startup tekst -->
+            <div class="c64-startup">
+                **** COMMODORE 64 BASIC V2 ****<br>
+                64K RAM SYSTEM  38911 BASIC BYTES FREE<br><br>
+                READY.<span class="cursor"></span>
+            </div>
 
-        <div class="sb1-content">
             <!-- Header -->
             <div class="header">
                 <h1>{{ config.game_title }}</h1>
@@ -22,9 +24,9 @@
 
             <!-- Score display -->
             <div class="score-display">
-                <div>Poeng: <span id="score">0</span></div>
-                <div>Beste: <span id="hiScore">0</span></div>
-                <div>Liv: <span id="lives">{{ config.player_lives }}</span></div>
+                <div>POENG: <span id="score">0</span></div>
+                <div>BESTE: <span id="hiScore">0</span></div>
+                <div>LIV: <span id="lives">{{ config.player_lives }}</span></div>
             </div>
 
             <!-- Spill container -->
@@ -34,20 +36,20 @@
 
             <!-- Instruksjoner -->
             <div class="instructions">
-                <p>Piltaster venstre/høyre = Beveg skipet</p>
-                <p>Mellomrom = Skyt</p>
-                <p>P = Pause | R = Start på nytt</p>
+                <p>PILTASTER VENSTRE/HOYRE = BEVEG SKIPET</p>
+                <p>MELLOMROM = SKYT</p>
+                <p>P = PAUSE | R = START PA NYTT</p>
             </div>
 
             <!-- Kontroller -->
             <div style="text-align: center; margin-top: 20px;">
-                <button class="sb1-button" onclick="restartGame()">Start spill</button>
+                <button class="c64-button" onclick="restartGame()">START SPILL</button>
             </div>
 
             <!-- Footer -->
             <div class="footer">
-                <p>Laget med Flask + KI</p>
-                <p>Demo for foredrag om KI og psykisk helse</p>
+                <p>LAGET MED FLASK + KI</p>
+                <p>DEMO FOR FOREDRAG OM KI OG PSYKISK HELSE</p>
             </div>
         </div>
     </div>

@@ -1,27 +1,24 @@
 /* ============================================
-   SPAREBANK 1 STYLE CSS
-   Moderne bankdesign
+   COMMODORE 64 STYLE CSS
+   Retro 8-bit look and feel
    ============================================ */
 
-/* SpareBank 1 fargeplett - offisielle farger fra design.sparebank1.no */
+/* C64 fargeplett */
 :root {
-    --sb1-fjell: #002776;       /* Fjell - primær mørk blå */
-    --sb1-vann: #005aa4;        /* Vann - primær blå */
-    --sb1-frost: #7eb5d2;       /* Frost - lys blå */
-    --sb1-baer: #db3335;        /* Bær - rød aksent */
-    --sb1-skog: #00754e;        /* Skog - grønn */
-    --sb1-nordlys: #33af85;     /* Nordlys - lys grønn */
-    --sb1-sol: #dc8000;         /* Sol - oransje */
-    --sb1-sand: #f8e9dd;        /* Sand - lys bakgrunn */
-    --sb1-natt: #001032;        /* Natt - mørkest blå */
-    --sb1-hvit: #ffffff;        /* Hvit */
-    --sb1-svart: #020a0a;       /* Svart */
-    --sb1-koksgraa: #323232;    /* Koksgrå */
-    --sb1-graa: #d8d8d8;        /* Grå */
+    --c64-blue: #4040e0;
+    --c64-light-blue: #a0a0ff;
+    --c64-green: #58d854;
+    --c64-red: #e75b5b;
+    --c64-cyan: #58d8d8;
+    --c64-yellow: #ffff00;
+    --c64-white: #ffffff;
+    --c64-black: #000000;
+    --c64-gray: #8c8c8c;
+    --c64-dark-gray: #505050;
 }
 
-/* Importer moderne font */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+/* Importer C64-lignende font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 * {
     margin: 0;
@@ -30,8 +27,8 @@
 }
 
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    background: linear-gradient(180deg, var(--sb1-fjell) 0%, var(--sb1-natt) 100%);
+    font-family: 'VT323', monospace;
+    background-color: var(--c64-blue);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -39,33 +36,66 @@ body {
     padding: 20px;
 }
 
-/* SpareBank 1 container */
-.sb1-container {
-    background-color: var(--sb1-hvit);
-    padding: 0;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+/* C64 border container */
+.c64-border {
+    background-color: var(--c64-light-blue);
+    padding: 20px;
     max-width: 800px;
     width: 100%;
 }
 
-.sb1-header {
-    background-color: var(--sb1-fjell);
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.c64-inner {
+    background-color: var(--c64-blue);
+    padding: 20px;
+    border: 4px solid var(--c64-light-blue);
 }
 
-.sb1-logo-img {
-    height: 32px;
-    width: auto;
+/* Scanlines for CRT-effekt */
+.scanlines {
+    position: relative;
 }
 
-.sb1-content {
-    background-color: var(--sb1-hvit);
-    padding: 30px;
+.scanlines::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+/* BASIC startup tekst */
+.c64-startup {
+    color: var(--c64-light-blue);
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Blinkende cursor */
+.cursor {
+    display: inline-block;
+    width: 12px;
+    height: 18px;
+    background-color: var(--c64-light-blue);
+    animation: blink 1s step-start infinite;
+    vertical-align: bottom;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Header styling */
@@ -75,163 +105,141 @@ body {
 }
 
 .header h1 {
-    font-size: 32px;
-    color: var(--sb1-fjell);
-    font-weight: 700;
+    font-size: 36px;
+    color: var(--c64-light-blue);
+    text-shadow: 2px 2px 0 var(--c64-black);
     margin-bottom: 10px;
 }
 
 .header .subtitle {
-    font-size: 14px;
-    color: var(--sb1-koksgraa);
+    font-size: 16px;
+    color: var(--c64-cyan);
 }
 
 /* Spill canvas container */
 .game-container {
-    background-color: var(--sb1-svart);
+    background-color: var(--c64-black);
     padding: 4px;
-    border-radius: 8px;
     margin: 20px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--c64-light-blue);
 }
 
 #gameCanvas {
     display: block;
-    border-radius: 4px;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
 
 /* Score display */
 .score-display {
-    font-size: 14px;
+    font-size: 20px;
     margin: 20px 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    color: var(--sb1-fjell);
-    font-weight: 600;
-    background-color: var(--sb1-sand);
-    padding: 15px 20px;
-    border-radius: 8px;
+    color: var(--c64-green);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border: 2px solid var(--c64-light-blue);
 }
 
 .score-display span {
-    color: var(--sb1-vann);
+    color: var(--c64-yellow);
 }
 
 /* Instruksjoner */
 .instructions {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     line-height: 1.8;
-    color: var(--sb1-koksgraa);
+    color: var(--c64-cyan);
 }
 
 .instructions p {
     margin: 8px 0;
 }
 
-/* SpareBank 1 knapper */
-.sb1-button {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 14px 32px;
-    background-color: var(--sb1-baer);
-    color: var(--sb1-hvit);
-    border: none;
-    border-radius: 4px;
+/* C64 knapper */
+.c64-button {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    padding: 12px 30px;
+    background-color: var(--c64-gray);
+    color: var(--c64-black);
+    border: 4px outset var(--c64-white);
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     margin: 10px;
-    box-shadow: 0 4px 12px rgba(219, 51, 53, 0.3);
-    transition: all 0.2s ease;
 }
 
-.sb1-button:hover {
-    background-color: #b82a2c;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(219, 51, 53, 0.4);
+.c64-button:hover {
+    background-color: var(--c64-light-blue);
 }
 
-.sb1-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(219, 51, 53, 0.3);
-}
-
-.sb1-button.secondary {
-    background-color: var(--sb1-vann);
-    box-shadow: 0 4px 12px rgba(0, 90, 164, 0.3);
-}
-
-.sb1-button.secondary:hover {
-    background-color: #004a8a;
-    box-shadow: 0 6px 16px rgba(0, 90, 164, 0.4);
+.c64-button:active {
+    border-style: inset;
+    background-color: var(--c64-dark-gray);
 }
 
 /* Footer */
 .footer {
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--sb1-graa);
-    font-size: 12px;
-    color: var(--sb1-koksgraa);
+    padding-top: 15px;
+    border-top: 2px solid var(--c64-light-blue);
+    font-size: 16px;
+    color: var(--c64-light-blue);
     text-align: center;
 }
 
 /* Link styling */
 a {
-    color: var(--sb1-vann);
+    color: var(--c64-cyan);
     text-decoration: none;
-    font-weight: 600;
 }
 
 a:hover {
-    color: var(--sb1-fjell);
+    color: var(--c64-yellow);
     text-decoration: underline;
 }
 
 /* Info box */
 .info-box {
-    background-color: var(--sb1-sand);
-    border-left: 4px solid var(--sb1-vann);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--c64-cyan);
     padding: 15px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
 }
 
 .info-box p {
-    color: var(--sb1-fjell);
+    color: var(--c64-green);
     margin: 5px 0;
 }
 
 /* Responsiv design */
 @media (max-width: 700px) {
-    .sb1-container {
-        border-radius: 12px;
+    .c64-border {
+        padding: 10px;
     }
 
-    .sb1-header {
-        padding: 15px 20px;
-    }
-
-    .sb1-content {
-        padding: 20px;
+    .c64-inner {
+        padding: 15px;
     }
 
     .header h1 {
-        font-size: 24px;
+        font-size: 28px;
+    }
+
+    .c64-startup {
+        font-size: 14px;
     }
 
     .instructions {
-        font-size: 12px;
+        font-size: 14px;
     }
 
-    .sb1-button {
-        padding: 12px 24px;
-        font-size: 12px;
+    .c64-button {
+        padding: 10px 20px;
+        font-size: 16px;
     }
 }

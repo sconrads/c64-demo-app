@@ -3,72 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Om - SpareBank 1 Demo</title>
+    <title>Om - C64 Demo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="sb1-container">
-        <!-- SpareBank 1 header med logo -->
-        <div class="sb1-header">
-            <img src="{{ url_for('static', filename='sb1-logo-white.svg') }}" alt="SpareBank 1" class="sb1-logo-img">
-        </div>
+    <div class="c64-border">
+        <div class="c64-inner scanlines">
+            <!-- C64 BASIC startup tekst -->
+            <div class="c64-startup">
+                **** COMMODORE 64 BASIC V2 ****<br>
+                64K RAM SYSTEM  38911 BASIC BYTES FREE<br><br>
+                READY.<span class="cursor"></span>
+            </div>
 
-        <div class="sb1-content">
             <div class="header">
-                <h1>Om demoen</h1>
-                <p class="subtitle">KI-assistert utvikling i praksis</p>
+                <h1>OM DEMOEN</h1>
+                <p class="subtitle">KI-ASSISTERT UTVIKLING I PRAKSIS</p>
             </div>
 
             <div class="info-box">
-                <p><strong>Denne appen er laget for et foredrag om KI og psykisk helse</strong></p>
+                <p><strong>DENNE APPEN ER LAGET FOR ET FOREDRAG OM KI OG PSYKISK HELSE</strong></p>
             </div>
 
             <div class="instructions" style="text-align: left; max-width: 600px; margin: 20px auto;">
-                <p style="color: #002776; font-weight: 600; margin-bottom: 15px;">
-                    Hovedpunkter:
+                <p style="color: #58d854; margin-bottom: 15px;">
+                    HOVEDPUNKTER:
                 </p>
 
-                <p style="color: #005aa4;">
-                    - Man føles aldri alene med en KI-kollega
+                <p style="color: #58d8d8;">
+                    - MAN FOELES ALDRI ALENE MED EN KI-KOLLEGA
                 </p>
-                <p style="color: #005aa4;">
-                    - Fra drøm til kode på sekunder
+                <p style="color: #58d8d8;">
+                    - FRA DROEM TIL KODE PA SEKUNDER
                 </p>
-                <p style="color: #005aa4;">
-                    - KI som mental støtte i arbeidshverdagen
+                <p style="color: #58d8d8;">
+                    - KI SOM MENTAL STOETTE I ARBEIDSHVERDAGEN
                 </p>
-                <p style="color: #005aa4;">
-                    - Senker terskelen for å skape
+                <p style="color: #58d8d8;">
+                    - SENKER TERSKELEN FOR A SKAPE
                 </p>
 
-                <p style="color: #db3335; margin-top: 30px; font-weight: 600;">
-                    Demo-ideer:
+                <p style="color: #e75b5b; margin-top: 30px;">
+                    DEMO-IDEER:
                 </p>
                 <p>
-                    - Endre farge på spilleren
+                    - ENDRE FARGE PA SPILLEREN
                 </p>
                 <p>
-                    - Legge til nye fiender
+                    - LEGGE TIL NYE FIENDER
                 </p>
                 <p>
-                    - Endre hastigheter
+                    - ENDRE HASTIGHETER
                 </p>
                 <p>
-                    - Legge til power-ups
+                    - LEGGE TIL POWER-UPS
                 </p>
                 <p>
-                    - Endre spillets navn
+                    - ENDRE SPILLETS NAVN
                 </p>
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <a href="/" class="sb1-button" style="text-decoration: none; display: inline-block;">
-                    Tilbake til spillet
+                <a href="/" class="c64-button" style="text-decoration: none; display: inline-block;">
+                    TILBAKE TIL SPILLET
                 </a>
             </div>
 
             <div class="footer">
-                <p>Laget med Flask + Claude KI</p>
+                <p>LAGET MED FLASK + CLAUDE KI</p>
             </div>
         </div>
     </div>
